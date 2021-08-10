@@ -1,0 +1,27 @@
+<div class="container">
+    <!-- nav class="navbar navbar-expand-lg navbar-light " style="background-color: #489cf0;"-->
+      <nav class="navbar navbar-expand-lg navbar-dark  bg-dark" >
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link"  routerLink="/home">Home <span class="sr-only"></span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"  routerLink="/history">History</a>
+          </li>
+        </ul>
+      </div>
+        <div class="row" class="ml-right">
+        <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="model">
+                  
+          <label ngbButtonLabel class="btn-primary" style="background-color: #07975bab;">
+            <input ngbButton type="radio" [value]='true'  (click)='mainServie.setConnectionStatusTrue()'> ON
+          </label>
+          <label ngbButtonLabel class="btn-danger">
+            <input ngbButton type="radio" [value]="false" (click)='mainServie.setConnectionStatusFalse()'> OFF
+          </label>
+        </div>
+      </div>
+      <hr>
+    </nav>
+</div>

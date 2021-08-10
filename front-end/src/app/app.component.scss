@@ -1,0 +1,15 @@
+.container {
+    margin-top: 30px;
+  }
+  
+  .row {
+    margin: 20px 0;
+  }
+  
+  ngb-pagination ul li{
+    &:first-child a {
+      span {
+        display: none;
+      }
+    }
+  }

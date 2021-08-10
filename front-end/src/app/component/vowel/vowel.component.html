@@ -1,0 +1,20 @@
+<div class="col">
+    <div class="col" >
+      <div class="table-responsive" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading" >
+        <thead>
+          <tr>
+            <th scope="col"><span>Vowels</span></th>
+            <th scope="col"><span>Count</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr   data-cy="entityTable"  *ngFor="let item of vowelsList">
+              <td>{{item.letter}}</td>
+              <td>{{item.count}}</td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

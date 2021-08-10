@@ -1,0 +1,17 @@
+<div class="col" >
+    <div class="table-responsive" id="entities"></div>
+    <table class="table table-striped" aria-describedby="page-heading" >
+      <thead>
+        <tr>
+          <th scope="col"><span>Consonants</span></th>
+          <th scope="col"><span>Count</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr   data-cy="entityTable"  *ngFor="let item of consonantsList">
+            <td>{{item.letter}}</td>
+            <td>{{item.count}}</td>
+          </tr>
+      </tbody>
+    </table>
+</div>

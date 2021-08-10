@@ -1,0 +1,50 @@
+<app-navigation></app-navigation>
+<div class="container">
+  <div class="row">
+  <div class="col col-md-8">
+    <textarea placeholder="Input Text"  rows="3" cols="100" id="inputTextArea" type="textArea" [formControl]="inputTextArea" ></textarea>
+  </div>
+  <div class="col col-md-4">
+    <button class="btn btn-primary" (click)="analyzeInputText()" *ngIf="inputTextArea.value.length > 0">START ANALYZE</button>
+  </div>
+</div>
+<hr />
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col col-md-2" *ngIf="inputTextValue">
+      <div class="card" style="background-color: rgba(117, 182, 123, 0.363);">
+        <div class="card-body">
+          <h5 class="card-title">Input Text :</h5>
+        </div>
+      </div>
+    </div>
+    <div class="col col-md-10" *ngIf="inputTextValue">
+      <div class="card" style="background-color: rgba(12, 8, 6, 0.363);">
+        <div class="card-body">
+          <h5 class="card-title">{{inputTextValue}}</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="container">
+    <div class="row">
+      <div class="card" *ngIf="vowelsCountValue && consonantsCountValue">
+        <div class="row">
+          <div class="col col-md-4" >
+            <app-vowel [vowelsList]="vowelsList"></app-vowel>
+          </div>
+          <div class="col col-md-4">
+            <app-consonants [consonantsList]="consonantsList"></app-consonants>
+          </div>
+          <div class="col col-md-4">
+            <app-piechart [vowelsCountValue]="vowelsCountValue" [consonantsCountValue]="consonantsCountValue">
+            </app-piechart>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

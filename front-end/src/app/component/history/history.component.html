@@ -1,0 +1,68 @@
+<app-navigation></app-navigation>
+
+<div class="container">
+  <div class="alert alert-warning" id="no-result" *ngIf="loadedPosts?.length === 0">
+    <span>No history found</span>
+  </div>
+
+  <div class="card" *ngIf="vowelsCountValue && consonantsCountValue">
+    <div class="row">
+      <div class="col">
+        <app-vowel [vowelsList]="vowelsList"></app-vowel>
+      </div>
+      <div class="col">
+        <app-consonants [consonantsList]="consonantsList"></app-consonants>
+      </div>
+      <div class="col">
+        <app-piechart [vowelsCountValue]="vowelsCountValue" [consonantsCountValue]="consonantsCountValue">
+        </app-piechart>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="table-responsive" id="entities" *ngIf=" loadedPosts.length > 0">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr>
+            <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+            <th scope="col"><span jhiTranslate="textAnalyzerApp.blog.name">InputText</span></th>
+            <th scope="col"><span jhiTranslate="textAnalyzerApp.blog.handle">VowelsCount</span></th>
+            <th scope="col"><span jhiTranslate="textAnalyzerApp.blog.user">ConsonantsCount</span></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let post of loadedPosts" data-cy="entityTable">
+            <td>{{ post.historyId }}</td>
+            <td>{{ post.inputText }}</td>
+            <td>{{ post.vowelsCount }}</td>
+            <td>{{ post.consonantsCount }}</td>
+            <td>
+            </td>
+            <td class="text-right">
+              <div class="btn-group">
+                <button type="submit" (click)="viewHistoryDetails(post.historyId)" class="btn btn-info btn-sm"
+                  data-cy="entityDetailsButton">
+                  <span class="d-none d-md-inline">Details</span>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="d-flex justify-content-between p-2">
+        <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
+          (pageChange)="fetchPosts()">
+        </ngb-pagination>
+
+        <select class="custom-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="fetchPosts()">
+          <option *ngFor="let itemsPerPage of itemsPerPageList" [ngValue]="itemsPerPage"> {{itemsPerPage}} items per
+            page</option>
+        </select>
+      </div>
+      <hr />
+    </div>
+  </div>
+</div>
